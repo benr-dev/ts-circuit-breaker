@@ -1,0 +1,31 @@
+{
+  "name": "oppossum",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "oppossum/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/oppossum",
+        "tsConfig": "oppossum/tsconfig.lib.json",
+        "packageJson": "oppossum/package.json",
+        "main": "oppossum/src/index.ts",
+        "assets": ["oppossum/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "oppossum/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
